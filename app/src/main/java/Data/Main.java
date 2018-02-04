@@ -9,10 +9,10 @@ public class Main {
     Double temp;
     Double pressure;
     Integer humidity;
-    Double tempMin;
-    Double tempMax;
-    Double seaLevel;
-    Double grnd;
+    Double temp_min;
+    Double temp_max;
+    Double sea_level;
+    Double grnd_level;
 
     public Double getTemp() {
         return temp;
@@ -26,20 +26,20 @@ public class Main {
         return humidity;
     }
 
-    public Double getTempMin() {
-        return tempMin;
+    public Double getTemp_min() {
+        return temp_min;
     }
 
-    public Double getTempMax() {
-        return tempMax;
+    public Double getTemp_max() {
+        return temp_max;
     }
 
-    public Double getSeaLevel() {
-        return seaLevel;
+    public Double getSea_level() {
+        return sea_level;
     }
 
-    public Double getGrnd() {
-        return grnd;
+    public Double getGrnd_level() {
+        return grnd_level;
     }
 
     public void setTemp(Double temp) {
@@ -54,19 +54,19 @@ public class Main {
         this.humidity = humidity;
     }
 
-    public void setTempMin(Double tempMin) {
-        this.tempMin = tempMin;
+    public void setTemp_min(Double temp_min) {
+        this.temp_min = temp_min;
     }
 
-    public void setTempMax(Double tempMax) {
-        this.tempMax = tempMax;
+    public void setTemp_max(Double temp_max) {
+        this.temp_max = temp_max;
     }
 
-    public void setSeaLevel(Double seaLevel) {
-        this.seaLevel = seaLevel;
+    public void setSea_level(Double sea_level) {
+        this.sea_level = sea_level;
     }
 
-    public void setGrnd(Double grnd) {
-        this.grnd = grnd;
+    public void setGrnd_level(Double grnd_level) {
+        this.grnd_level = grnd_level;
     }
 }
