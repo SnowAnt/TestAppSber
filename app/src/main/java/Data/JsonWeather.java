@@ -20,6 +20,7 @@ public class JsonWeather {
     private String name;
     private Integer cod;
     private Long visibility;
+    private Snow snow;
 
     public Coord getCoord() {
         return coord;
@@ -123,5 +124,13 @@ public class JsonWeather {
 
     public void setVisibility(Long visibility) {
         this.visibility = visibility;
+    }
+
+    public Snow getSnow() {
+        return snow;
+    }
+
+    public void setSnow(Snow snow) {
+        this.snow = snow;
     }
 }

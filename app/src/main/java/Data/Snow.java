@@ -4,7 +4,7 @@ package Data;
  * Created by Anton on 09.02.2018.
  */
 
-class Rain {
+class Snow {
 
     private Double h;
 

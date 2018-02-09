@@ -6,13 +6,13 @@ package Data;
 
 public class Main {
 
-    Double temp;
-    Double pressure;
-    Integer humidity;
-    Double temp_min;
-    Double temp_max;
-    Double sea_level;
-    Double grnd_level;
+    private Double temp;
+    private Double pressure;
+    private Integer humidity;
+    private Double temp_min;
+    private Double temp_max;
+    private Double sea_level;
+    private Double grnd_level;
 
     public Double getTemp() {
         return temp;

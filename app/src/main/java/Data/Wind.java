@@ -6,8 +6,8 @@ package Data;
 
 public class Wind {
 
-    Double speed;
-    Double deg;
+    private Double speed;
+    private Double deg;
 
     public Double getSpeed() {
         return speed;

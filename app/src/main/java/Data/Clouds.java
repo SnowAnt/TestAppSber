@@ -6,7 +6,7 @@ package Data;
 
 public class Clouds {
 
-    Double all;
+    private Double all;
 
     public Double getAll() {
         return all;

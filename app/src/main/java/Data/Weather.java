@@ -6,10 +6,10 @@ package Data;
 
 public class Weather {
 
-    Long id;
-    String main;
-    String description;
-    String icon;
+    private Long id;
+    private String main;
+    private String description;
+    private String icon;
 
     public void setId(Long id) {
         this.id = id;

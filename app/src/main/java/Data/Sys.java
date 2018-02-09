@@ -6,12 +6,12 @@ package Data;
 
 public class Sys {
 
-    Double message;
-    String country;
-    Long sunrise;
-    Long sunset;
-    Long type;
-    Long id;
+    private Double message;
+    private String country;
+    private Long sunrise;
+    private Long sunset;
+    private Long type;
+    private Long id;
 
     public Double getMessage() {
         return message;
