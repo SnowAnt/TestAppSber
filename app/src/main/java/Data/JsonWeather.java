@@ -16,8 +16,10 @@ public class JsonWeather {
     private Long dt;
     private Sys sys;
     private Long id;
+    private Rain rain;
     private String name;
     private Integer cod;
+    private Long visibility;
 
     public Coord getCoord() {
         return coord;
@@ -105,5 +107,21 @@ public class JsonWeather {
 
     public void setCod(Integer cod) {
         this.cod = cod;
+    }
+
+    public Rain getRain() {
+        return rain;
+    }
+
+    public void setRain(Rain rain) {
+        this.rain = rain;
+    }
+
+    public Long getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(Long visibility) {
+        this.visibility = visibility;
     }
 }

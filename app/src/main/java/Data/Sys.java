@@ -10,6 +10,8 @@ public class Sys {
     String country;
     Long sunrise;
     Long sunset;
+    Long type;
+    Long id;
 
     public Double getMessage() {
         return message;
@@ -42,4 +44,21 @@ public class Sys {
     public void setSunset(Long sunset) {
         this.sunset = sunset;
     }
+
+    public void setType(Long type) {
+        this.type = type;
+    }
+
+    public Long getType() {
+        return type;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
+

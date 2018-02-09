@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TestAppSber</string>
+    <string name="city">Введите название города:</string>
+    <string name="gps">Узнать погоду по кординатам:</string>
 </resources>

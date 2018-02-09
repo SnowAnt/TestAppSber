@@ -1,7 +1,9 @@
 package pepelyaev.sberbank.com.testappsber;
 
+import android.location.Location;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -17,21 +19,47 @@ import Data.JsonWeather;
  * Created by Anton on 04.02.2018.
  */
 
-public class AsyncTaskWeather extends AsyncTask<Void, Void, String> {
-
-    private static Double lat;
-    private static Double lon;
+public class AsyncTaskWeather extends AsyncTask<Integer, Void, String> {
 
 
-    static final String KEY = "5e59f09ec79683ae0553cb07f650f820";
 
-    static final String API_URL = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&APPID=" + KEY;
+
+    private JsonWeather mJSONWeather;
+    private String API_URL;
+    private Double mLat;
+    private Double mLon;
+
+
+    public AsyncTaskWeather(Double lat,Double lon){
+        mLat=lat;
+        mLon=lon;
+    }
+
+    private  String KEY = "5e59f09ec79683ae0553cb07f650f820";
 
     @Override
-    protected String doInBackground(Void... urls) {
+    protected void onPreExecute() {
+        super.onPreExecute();
+         API_URL ="http://api.openweathermap.org/data/2.5/weather?lat="+mLat+"&lon="+mLon+"&APPID=" + KEY;;
+         System.out.println(API_URL);
+    }
+
+    @Override
+    protected String doInBackground(Integer... urls) {
+
+   //     if (urls[0]==R.id.gps_button){
+
+          //  API_URL =API_URL;
+     //   }
+
+
+
+
+
         try {
             URL url = new URL(API_URL);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            System.out.println(urlConnection.getResponseCode()+"");
             if (urlConnection.getResponseCode() == 200) {
                 urlConnection.setRequestMethod("POST");
                 try {
@@ -71,8 +99,9 @@ public class AsyncTaskWeather extends AsyncTask<Void, Void, String> {
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            JsonWeather jsonWeather = objectMapper.readValue(st, JsonWeather.class);
-            Log.d("tempa",jsonWeather.getMain().getTemp()+"");
+             mJSONWeather = objectMapper.readValue(st, JsonWeather.class);
+            Log.d("AAAAA",mJSONWeather.getMain().getTemp()+"");
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,10 +110,5 @@ public class AsyncTaskWeather extends AsyncTask<Void, Void, String> {
 
     }
 
-    public static void update(Double latitude, Double longitude) {
-       lat = latitude;
-       lon = longitude;
 
-
-    }
 }
