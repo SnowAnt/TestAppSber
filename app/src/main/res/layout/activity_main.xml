@@ -67,7 +67,8 @@
         <TextView
             android:id="@+id/city_value"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:freezesText="true"/>
 
     </LinearLayout>
 
@@ -87,6 +88,7 @@
         android:id="@+id/temp_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:freezesText="true"
         />
 
 </LinearLayout>
@@ -103,7 +105,8 @@
         <TextView
             android:id="@+id/pressure_value"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:freezesText="true"/>
 
     </LinearLayout>
 
@@ -121,7 +124,8 @@
         <TextView
             android:id="@+id/wind_value"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:freezesText="true"/>
 
     </LinearLayout>
 
@@ -139,7 +143,8 @@
         <TextView
             android:id="@+id/humidity_value"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:freezesText="true"/>
 
     </LinearLayout>
     <LinearLayout
@@ -156,7 +161,8 @@
         <TextView
             android:id="@+id/rain_value"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:freezesText="true"/>
     </LinearLayout>
 
     <LinearLayout
@@ -171,7 +177,8 @@
         <TextView
             android:id="@+id/snow_value"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:freezesText="true"/>
 
     </LinearLayout>
 

@@ -1,8 +1,9 @@
 package pepelyaev.sberbank.com.testappsber;
 
-import android.location.Location;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,73 +23,106 @@ import Data.JsonWeather;
 public class AsyncTaskWeather extends AsyncTask<Integer, Void, String> {
 
 
-
-
     private JsonWeather mJSONWeather;
-    private String API_URL;
+    private String mAPIURL;
     private Double mLat;
     private Double mLon;
+    private TextView mTemp;
+    private TextView mPressure;
+    private TextView mHumidity;
+    private TextView mRain;
+    private TextView mSnow;
+    private TextView mCity;
+    private TextView mWind;
+    private String mAPIURLGPS;
+    private String mAPIURLCity;
+    private String mCityName;
+    private Context mContext;
 
 
-    public AsyncTaskWeather(Double lat,Double lon){
-        mLat=lat;
-        mLon=lon;
+    public AsyncTaskWeather(Double lat,
+                            Double lon,
+                            TextView temp,
+                            TextView pressure,
+                            TextView humidity,
+                            TextView rain,
+                            TextView snow,
+                            TextView city,
+                            TextView wind,
+                            String cityName,
+                            Context context) {
+        mLat = lat;
+        mLon = lon;
+        mTemp = temp;
+        mPressure = pressure;
+        mHumidity = humidity;
+        mRain = rain;
+        mSnow = snow;
+        mCity = city;
+        mWind = wind;
+        mCityName = cityName;
+        mContext = context;
     }
 
-    private  String KEY = "5e59f09ec79683ae0553cb07f650f820";
+    private String KEY = "5e59f09ec79683ae0553cb07f650f820";
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-         API_URL ="http://api.openweathermap.org/data/2.5/weather?lat="+mLat+"&lon="+mLon+"&APPID=" + KEY;;
-         System.out.println(API_URL);
+        mAPIURLGPS = "http://api.openweathermap.org/data/2.5/weather?lat=" + mLat + "&lon=" + mLon + "&APPID=" + KEY;
+        mAPIURLCity = "http://api.openweathermap.org/data/2.5/weather?q=" + mCityName + "&type=like&lang=ru&APPID=" + KEY;
     }
 
     @Override
     protected String doInBackground(Integer... urls) {
 
-   //     if (urls[0]==R.id.gps_button){
+        if (urls[0] == R.id.gps_button) {
 
-          //  API_URL =API_URL;
-     //   }
+            mAPIURL = mAPIURLGPS;
+        }
+        if (urls[0] == R.id.city_button) {
 
-
-
+            mAPIURL = mAPIURLCity;
+        }
 
 
         try {
-            URL url = new URL(API_URL);
+            URL url = new URL(mAPIURL);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            System.out.println(urlConnection.getResponseCode()+"");
-            if (urlConnection.getResponseCode() == 200) {
-                urlConnection.setRequestMethod("POST");
-                try {
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    bufferedReader.close();
-                    return stringBuilder.toString();
-                } finally {
-                    urlConnection.disconnect();
+            if (urlConnection.getResponseCode() != 200) {
+
+                urlConnection.disconnect();
+                return "нет";
+            }
+            urlConnection.setRequestMethod("POST");
+            try {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                StringBuilder stringBuilder = new StringBuilder();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(line).append("\n");
                 }
-            } else {
+                bufferedReader.close();
+                return stringBuilder.toString();
+            } finally {
                 urlConnection.disconnect();
             }
 
 
         } catch (Exception e) {
             Log.e("ERROR", e.getMessage(), e);
-            return null;
+            return "нет";
         }
-        return null;
+
     }
 
     @Override
     protected void onPostExecute(String o) {
         super.onPostExecute(o);
+        if (o.equals("нет")) {
+            Toast.makeText(mContext, "Что-то пошло не так!Скорректируйте данные и повторите запрос", Toast.LENGTH_SHORT).show();
+            return;
+        }
         parseJackson(o);
     }
 
@@ -99,8 +133,8 @@ public class AsyncTaskWeather extends AsyncTask<Integer, Void, String> {
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-             mJSONWeather = objectMapper.readValue(st, JsonWeather.class);
-
+            mJSONWeather = objectMapper.readValue(st, JsonWeather.class);
+            setValue(mJSONWeather);
 
 
         } catch (IOException e) {
@@ -110,7 +144,18 @@ public class AsyncTaskWeather extends AsyncTask<Integer, Void, String> {
 
     }
 
-    public JsonWeather getmJSONWeather() {
-        return mJSONWeather;
+    public void setValue(JsonWeather lJsonWeather) {
+        if (lJsonWeather == null) {
+            return;
+        }
+        mTemp.setText("  " + (lJsonWeather.getMain().getTemp() - 273) + " C");
+        mPressure.setText("  " + lJsonWeather.getMain().getPressure().toString());
+        mHumidity.setText("  " + lJsonWeather.getMain().getHumidity().toString());
+        mRain.setText((lJsonWeather.getRain() == null) ? "   -" : "  " + lJsonWeather.getRain().getH().toString());
+        mSnow.setText((lJsonWeather.getSnow() == null) ? "   -" : "  " + lJsonWeather.getSnow().getH().toString());
+        mCity.setText("  " + lJsonWeather.getName());
+        mWind.setText("  " + lJsonWeather.getWind().getSpeed().toString());
+
+
     }
 }

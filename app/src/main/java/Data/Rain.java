@@ -3,20 +3,21 @@ package Data;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
- * Created by Anton on 09.02.2018.
+ * Created by Anton on 10.02.2018.
  */
 
-class Rain {
+public class Rain {
 
 
-    private Double hThree;
+        private Double h;
 
-    public Double getHThree() {
-        return hThree;
-    }
+        public Double getH() {
+            return h;
+        }
 
-    @JsonSetter("3h")
-    public void setHThree(Double h) {
-        this.hThree = h;
-    }
+        @JsonSetter("3h")
+        public void setH(Double h) {
+            this.h = h;
+        }
+
 }
