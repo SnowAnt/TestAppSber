@@ -1,5 +1,7 @@
 package Data;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 /**
  * Created by Anton on 03.02.2018.
  */
@@ -9,10 +11,10 @@ public class Main {
     private Double temp;
     private Double pressure;
     private Integer humidity;
-    private Double temp_min;
-    private Double temp_max;
-    private Double sea_level;
-    private Double grnd_level;
+    private Double tempMin;
+    private Double tempMax;
+    private Double seaLevel;
+    private Double grndLevel;
 
     public Double getTemp() {
         return temp;
@@ -26,21 +28,7 @@ public class Main {
         return humidity;
     }
 
-    public Double getTemp_min() {
-        return temp_min;
-    }
 
-    public Double getTemp_max() {
-        return temp_max;
-    }
-
-    public Double getSea_level() {
-        return sea_level;
-    }
-
-    public Double getGrnd_level() {
-        return grnd_level;
-    }
 
     public void setTemp(Double temp) {
         this.temp = temp;
@@ -54,19 +42,36 @@ public class Main {
         this.humidity = humidity;
     }
 
-    public void setTemp_min(Double temp_min) {
-        this.temp_min = temp_min;
+    public Double getTempMin() {
+        return tempMin;
     }
 
-    public void setTemp_max(Double temp_max) {
-        this.temp_max = temp_max;
+    public Double getTempMax() {
+        return tempMax;
     }
 
-    public void setSea_level(Double sea_level) {
-        this.sea_level = sea_level;
+    public Double getSeaLevel() {
+        return seaLevel;
     }
 
-    public void setGrnd_level(Double grnd_level) {
-        this.grnd_level = grnd_level;
+    public Double getGrndLevel() {
+        return grndLevel;
     }
+    @JsonSetter("temp_min")
+    public void setTempMin(Double tempMin) {
+        this.tempMin = tempMin;
+    }
+    @JsonSetter("temp_max")
+    public void setTempMax(Double tempMax) {
+        this.tempMax = tempMax;
+    }
+    @JsonSetter("sea_level")
+    public void setSeaLevel(Double seaLevel) {
+        this.seaLevel = seaLevel;
+    }
+    @JsonSetter("grnd_level")
+    public void setGrndLevel(Double grndLevel) {
+        this.grndLevel = grndLevel;
+    }
+
 }

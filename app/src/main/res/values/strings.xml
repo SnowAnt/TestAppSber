@@ -2,4 +2,11 @@
     <string name="app_name">TestAppSber</string>
     <string name="city">Введите название города:</string>
     <string name="gps">Узнать погоду по кординатам:</string>
+    <string name="header">Данные о погоде:</string>
+    <string name="temp">Температура:   </string>
+    <string name="pressure">Давление:   </string>
+    <string name="humidity">Влажность:   </string>
+    <string name="rain">Дождь:   </string>
+    <string name="snow">Снег:   </string>
+    <string name="city_lab">Город:   </string>
 </resources>

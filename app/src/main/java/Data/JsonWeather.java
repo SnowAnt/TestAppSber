@@ -133,4 +133,5 @@ public class JsonWeather {
     public void setSnow(Snow snow) {
         this.snow = snow;
     }
+
 }

@@ -100,7 +100,7 @@ public class AsyncTaskWeather extends AsyncTask<Integer, Void, String> {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
              mJSONWeather = objectMapper.readValue(st, JsonWeather.class);
-            Log.d("AAAAA",mJSONWeather.getMain().getTemp()+"");
+
 
 
         } catch (IOException e) {
@@ -110,5 +110,7 @@ public class AsyncTaskWeather extends AsyncTask<Integer, Void, String> {
 
     }
 
-
+    public JsonWeather getmJSONWeather() {
+        return mJSONWeather;
+    }
 }
